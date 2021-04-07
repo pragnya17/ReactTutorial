@@ -12,11 +12,12 @@ import './index.css';
   
   class Board extends React.Component {
     renderSquare(i) {
-      return
+      return(
       <Square 
         value={this.props.squares[i]} 
         onClick={() => this.props.onClick(i)}
-        />;
+        />
+      );
     }
   
     render() {
@@ -55,10 +56,9 @@ import './index.css';
     }
 
     handleClick(i){
-        const history = this.state.history.slice(0, this.state.stepNumber - 1);
+        const history = this.state.history.slice(0, this.state.stepNumber + 1);
         const current = history[history.length - 1];
-        const squares = 
-        this.state.squares.slice();
+        const squares = current.squares.slice();
         if (calculateWinner(squares) || squares[i]){
             return;
         }
@@ -113,7 +113,7 @@ import './index.css';
           </div>
           <div className="game-info">
             <div>{status}</div>
-            <ol>{/* TODO */}</ol>
+            <ol>{moves}</ol>
           </div>
         </div>
       );
